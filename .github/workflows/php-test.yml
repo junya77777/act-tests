@@ -1,4 +1,4 @@
-name: Simple PHP Test
+name: Strict PHP Test
 
 on: [push]
 
@@ -7,5 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run PHP Script
-        run: php test.php
+      - name: Run Test Script
+        # ここが重要：phpコマンドの実行結果を厳密にチェックさせます
+        run: |
+          php test.php
