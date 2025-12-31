@@ -1,10 +1,11 @@
-name: Laravel Prep Test
+name: Laravel Test
 
 on: [push]
 
 jobs:
-  test:
+  laravel-tests:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -14,8 +15,8 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, dom, fileinfo, mysql
 
-      - name: Check PHP Version
-        run: php -v
+      - name: Install Dependencies
+        run: composer install
 
-      - name: Run Test Script
-        run: php test.php
+      - name: Run Test
+        run: php artisan test
